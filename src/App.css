@@ -1,0 +1,924 @@
+/************ Fuetes ************/
+@font-face {
+  font-family: Centra;
+  src: url('./assets/font/CentraNo2-Bold.ttf');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: Centra;
+  src: url('./assets/font/CentraNo2-Medium.ttf');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: Centra;
+  src: url('./assets/font/CentraNo2-Book.ttf');
+  font-weight: 400;
+}
+
+/************ Css ************/
+/* Estilos para resetear los márgenes, rellenos y ajustar el modelo de caja */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Estilos para el elemento html */
+html {
+  /* Configuración para un desplazamiento suave al hacer scroll */
+  scroll-behavior: smooth;
+  /* Espacio de desplazamiento superior al hacer scroll (para compensar el navbar fijo) */
+  scroll-padding-top: 75px;
+}
+
+/* Estilos para el cuerpo del documento */
+body {
+  font-weight: 400;
+  /* Peso de la fuente */
+
+  overflow-x: hidden;
+  /* Ocultar la barra de desplazamiento horizontal */
+  /* Establecer el cuerpo como relativo para que los elementos posicionados sean relativos a él */
+  position: relative;
+  /* Color de fondo del cuerpo */
+  background-color: #121212 !important;
+  /* Color del texto en el cuerpo */
+  color: #fff !important;
+  /* Fuente principal del cuerpo */
+  font-family: 'Centra', sans-serif !important;
+}
+
+
+/* Reset de estilos para los elementos de encabezado (h1-h6) */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  /* Elimina el margen */
+  padding: 0;
+  /* Elimina el relleno */
+  line-height: normal;
+  /* Establece la altura de línea predeterminada */
+}
+
+/* Reset de estilos para los párrafos, enlaces, elementos de lista y botones */
+p,
+a,
+li,
+button,
+ul {
+  margin: 0;
+  /* Elimina el margen */
+  padding: 0;
+  /* Elimina el relleno */
+  line-height: normal;
+  /* Establece la altura de línea predeterminada */
+  text-decoration: none;
+  /* Elimina la decoración del texto */
+}
+
+/* Estilo para los enlaces al pasar el cursor sobre ellos */
+a:hover {
+  text-decoration: none;
+  /* Elimina la decoración del texto al pasar el cursor */
+}
+
+/* Estilos para las imágenes */
+img {
+  width: 100%;
+  /* Establece el ancho al 100% del contenedor */
+  height: auto;
+  /* Mantiene la proporción de la imagen */
+}
+
+/* Estilos para los botones */
+button {
+  border: 0;
+  /* Elimina el borde */
+  background-color: transparent;
+  /* Establece un fondo transparente */
+}
+
+/* Estilos para los campos de entrada, áreas de texto y selecciones cuando están enfocados */
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  /* Elimina el contorno de enfoque */
+}
+
+/* Media query para pantallas grandes (mínimo 1700px de ancho) */
+@media (min-width:1700px) {
+  main .container {
+    max-width: 100%;
+    /* Establece el ancho máximo al 100% del contenedor padre */
+    padding: 0 150px;
+    /* Agrega un relleno de 0 a los lados y 150px arriba y abajo */
+  }
+}
+
+/* Estilos para párrafos con la clase 'success' */
+p.success {
+  color: green;
+  /* Establece el color de texto verde */
+}
+
+/* Estilos para párrafos con la clase 'danger' */
+p.danger {
+  color: red;
+  /* Establece el color de texto rojo */
+}
+
+/************ Navbar Css ************/
+
+/* Estilos generales para la barra de navegación */
+nav.navbar {
+  padding: 18px 0;
+  /* Establece relleno en la parte superior e inferior */
+  position: fixed;
+  /* Fija la barra de navegación en la parte superior de la ventana */
+  width: 100%;
+  /* Establece el ancho al 100% del viewport */
+  top: 0;
+  /* Coloca la barra de navegación en la parte superior de la ventana */
+  z-index: 9999;
+  /* Establece la capa z para que la barra de navegación esté en la parte superior */
+  transition: 0.32s ease-in-out;
+  /* Agrega una transición suave para cambios */
+}
+
+/* Estilos para la barra de navegación cuando se ha desplazado */
+nav.navbar.scrolled {
+  padding: 0px 0;
+  /* Elimina el relleno en la parte superior e inferior */
+  background-color: #121212;
+  /* Cambia el color de fondo */
+}
+
+/* Estilos para el enlace de la marca de la barra de navegación */
+nav.navbar a.navbar-brand {
+  width: 9%;
+  /* Establece el ancho del enlace de la marca */
+}
+
+/* Estilos para los enlaces de navegación en la barra de navegación */
+nav.navbar .navbar-nav .nav-link.navbar-link {
+  font-weight: 400;
+  /* Establece el peso de la fuente */
+  color: #fff !important;
+  /* Establece el color del texto a blanco */
+  letter-spacing: 0.8px;
+  /* Establece el espaciado entre caracteres */
+  padding: 0 25px;
+  /* Establece el relleno en los lados izquierdo y derecho */
+  font-size: 18px;
+  /* Establece el tamaño de la fuente */
+  opacity: 0.75;
+  /* Establece la opacidad */
+}
+
+/* Estilos para los enlaces de navegación en la barra de navegación cuando se pasa el cursor sobre ellos o están activos */
+nav.navbar .navbar-nav a.nav-link.navbar-link:hover,
+nav.navbar .navbar-nav a.nav-link.navbar-link.active {
+  opacity: 1;
+  /* Establece la opacidad a 1 */
+}
+
+/* Estilos para el contenedor de texto de la barra de navegación */
+span.navbar-text {
+  display: flex;
+  /* Establece el contenedor como un flexbox */
+  align-items: center;
+  /* Centra verticalmente los elementos hijos */
+}
+
+/* Estilos para el contenedor de iconos sociales */
+.social-icon {
+  display: inline-block;
+  /* Establece el contenedor como un bloque en línea */
+  margin-left: 14px;
+  /* Agrega margen a la izquierda */
+}
+
+/* Estilos para los enlaces de iconos sociales */
+.social-icon a {
+  width: 42px;
+  /* Establece el ancho */
+  height: 42px;
+  /* Establece la altura */
+  background: rgba(217, 217, 217, 0.1);
+  /* Establece el fondo */
+  display: inline-flex;
+  /* Establece el contenedor como un flexbox en línea */
+  border-radius: 50%;
+  /* Establece la forma del borde como un círculo */
+  margin-right: 6px;
+  /* Agrega margen a la derecha */
+  align-items: center;
+  /* Centra verticalmente los elementos hijos */
+  justify-content: center;
+  /* Centra horizontalmente los elementos hijos */
+  line-height: 1;
+  /* Establece la altura de línea */
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  /* Establece el borde */
+}
+
+/* Pseudo-elemento para efecto de transición en los enlaces de iconos sociales */
+.social-icon a::before {
+  content: "";
+  /* Agrega contenido generado */
+  width: 42px;
+  /* Establece el ancho */
+  height: 42px;
+  /* Establece la altura */
+  position: absolute;
+  /* Establece la posición absoluta */
+  background-color: #ffffff;
+  /* Establece el color de fondo */
+  border-radius: 50%;
+  /* Establece la forma del borde como un círculo */
+  transform: scale(0);
+  /* Escala el elemento a 0 (inicialmente invisible) */
+  transition: 0.3s ease-in-out;
+  /* Agrega una transición suave */
+}
+
+
+/* Pseudo-elemento para efecto de escala al pasar el cursor sobre los enlaces de iconos sociales */
+.social-icon a:hover::before {
+  transform: scale(1);
+  /* Escala el elemento a su tamaño original al pasar el cursor sobre él */
+}
+
+/* Estilo de imagen dentro de los enlaces de iconos sociales */
+.social-icon a img {
+  width: 40%;
+  /* Establece el ancho */
+  z-index: 1;
+  /* Establece el índice z para la superposición */
+  transition: 0.3s ease-in-out;
+  /* Agrega una transición suave */
+}
+
+/* Efecto de filtro al pasar el mouse sobre la imagen */
+.social-icon a:hover img {
+  filter: brightness(0) saturate(100%) invert(0%) sepia(7%) saturate(98%) hue-rotate(346deg) brightness(95%) contrast(86%);
+}
+
+/* Estilo de botón dentro de la barra de navegación */
+.navbar-text button {
+  font-weight: 700;
+  /* Establece el peso de la fuente */
+  color: #fff;
+  /* Establece el color del texto */
+  border: 1px solid #fff;
+  /* Establece el borde */
+  padding: 18px 34px;
+  /* Establece el relleno */
+  font-size: 18px;
+  /* Establece el tamaño de la fuente */
+  margin-left: 18px;
+  /* Establece el margen izquierdo */
+  position: relative;
+  /* Establece la posición relativa */
+  background-color: transparent;
+  /* Establece el color de fondo transparente */
+  transition: 0.3s ease-in-out;
+  /* Agrega una transición suave */
+}
+
+/* Estilo de texto dentro del botón */
+.navbar-text button span {
+  z-index: 1;
+  /* Establece el índice z para la superposición */
+}
+
+/* Pseudo-elemento para efecto de transición de fondo en los botones de texto de la barra de navegación */
+.navbar-text button::before {
+  content: "";
+  /* Agrega contenido generado */
+  width: 0%;
+  /* Establece el ancho inicial */
+  height: 100%;
+  /* Establece la altura */
+  position: absolute;
+  /* Establece la posición absoluta */
+  background-color: #fff;
+  /* Establece el color de fondo */
+  left: 0;
+  /* Posiciona el elemento desde la izquierda */
+  top: 0;
+  /* Posiciona el elemento desde la parte superior */
+  z-index: -1;
+  /* Coloca el elemento detrás del botón */
+  transition: 0.3s ease-in-out;
+  /* Agrega una transición suave */
+}
+
+.navbar-text button:hover {
+  color: #121212;
+  /* Cambia el color del texto al pasar el cursor sobre el botón */
+}
+
+.navbar-text button:hover::before {
+  content: "";
+  /* Agrega contenido generado */
+  width: 100%;
+  /* Establece el ancho al 100% */
+  height: 100%;
+  /* Establece la altura al 100% */
+  position: absolute;
+  /* Establece la posición absoluta */
+}
+
+/* Estilos para remover el contorno y la sombra al activar o enfocar el botón del navbar-toggler */
+nav.navbar .navbar-toggler:active,
+nav.navbar .navbar-toggler:focus {
+  outline: none;
+  /* Remueve el contorno */
+  box-shadow: none;
+  /* Remueve la sombra */
+}
+
+/* Estilos para el icono del botón del navbar-toggler en la barra de navegación */
+nav.navbar .navbar-toggler-icon {
+  width: 24px;
+  /* Establece el ancho del icono */
+  height: 17px;
+  /* Establece la altura del icono */
+  background-image: none;
+  /* Remueve cualquier imagen de fondo */
+  position: relative;
+  /* Establece la posición relativa */
+  border-bottom: 2px solid #fff;
+  /* Establece un borde inferior sólido */
+  transition: all 300ms linear;
+  /* Agrega una transición suave a todas las propiedades */
+  top: -2px;
+  /* Desplaza el icono hacia arriba */
+}
+
+/* Estilos para el enfoque del icono del botón del navbar-toggler en la barra de navegación */
+nav.navbar .navbar-toggler-icon:focus {
+  border-bottom: 2px solid #fff;
+  /* Cambia el estilo del borde inferior al enfocar */
+}
+
+/* Estilos para los pseudo-elementos del icono del botón del navbar-toggler en la barra de navegación */
+nav.navbar .navbar-toggler-icon:after,
+nav.navbar .navbar-toggler-icon:before {
+  width: 24px;
+  /* Establece el ancho */
+  position: absolute;
+  /* Establece la posición absoluta */
+  height: 2px;
+  /* Establece la altura */
+  background-color: #fff;
+  /* Establece el color de fondo */
+  top: 0;
+  /* Posiciona desde la parte superior */
+  left: 0;
+  /* Posiciona desde la izquierda */
+  content: '';
+  /* Agrega contenido generado */
+  z-index: 2;
+  /* Establece el índice z para que esté sobre el botón */
+  transition: all 300ms linear;
+  /* Agrega una transición suave a todas las propiedades */
+}
+
+/* Estilos para el pseudo-elemento :after del icono del botón del navbar-toggler en la barra de navegación */
+nav.navbar .navbar-toggler-icon:after {
+  top: 8px;
+  /* Desplaza el pseudo-elemento hacia abajo */
+}
+
+/* Estilos para el icono del botón del navbar-toggler cuando el menú está expandido en la barra de navegación */
+nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon:after {
+  transform: rotate(45deg);
+  /* Rota el pseudo-elemento en 45 grados */
+  background-color: #fff;
+  /* Establece el color de fondo */
+  height: 2px;
+  /* Establece la altura */
+}
+
+nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon:before {
+  transform: translateY(8px) rotate(-45deg);
+  /* Desplaza y rota el pseudo-elemento en -45 grados */
+  background-color: #fff;
+  /* Establece el color de fondo */
+  height: 2px;
+  /* Establece la altura */
+}
+
+nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
+  border-color: transparent;
+  /* Establece el color del borde transparente */
+}
+
+
+
+/************ Banner Css ************/
+.banner {
+  margin-top: 0;
+  /* Establece el margen superior */
+  padding: 260px 0 100px 0;
+  /* Establece el relleno */
+  background-image: url('./assets/img/banner-bg.png');
+  /* Establece la imagen de fondo */
+  background-position: top center;
+  /* Posiciona la imagen de fondo en la parte superior centrada */
+  background-size: cover;
+  /* Establece el tamaño de la imagen de fondo para cubrir todo el contenedor */
+  background-repeat: no-repeat;
+  /* Evita que la imagen de fondo se repita */
+}
+
+/* Estilos para la línea de etiqueta en el banner */
+.banner .tagline {
+  font-weight: 700;
+  /* Establece el peso de la fuente */
+  letter-spacing: 0.8px;
+  /* Establece el espaciado entre letras */
+  padding: 8px 10px;
+  /* Establece el relleno */
+  background: linear-gradient(90.21deg, rgba(170, 54, 124, 0.5) -5.91%, rgba(74, 47, 189, 0.5) 111.58%);
+  /* Establece un degradado lineal como fondo */
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  /* Establece un borde sólido */
+  font-size: 20px;
+  /* Establece el tamaño de la fuente */
+  margin-bottom: 16px;
+  /* Establece el margen inferior */
+  display: inline-block;
+  /* Hace que el elemento se comporte como un bloque en línea */
+}
+
+/* Estilos para el título en el banner */
+.banner h1 {
+  font-size: 65px;
+  /* Establece el tamaño de la fuente */
+  font-weight: 700;
+  /* Establece el peso de la fuente */
+  letter-spacing: 0.8px;
+  /* Establece el espaciado entre letras */
+  line-height: 1;
+  /* Establece la altura de línea */
+  margin-bottom: 20px;
+  /* Establece el margen inferior */
+  display: block;
+  /* Hace que el elemento se comporte como un bloque */
+}
+
+/* Estilos para el párrafo en el banner */
+.banner p {
+  color: #B8B8B8;
+  /* Establece el color del texto */
+  font-size: 18px;
+  /* Establece el tamaño de la fuente */
+  letter-spacing: 0.8px;
+  /* Establece el espaciado entre letras */
+  line-height: 1.5em;
+  /* Establece la altura de línea */
+  width: 96%;
+  /* Establece el ancho */
+}
+
+/* Estilos para el botón en el banner */
+.banner button {
+  color: #fff;
+  /* Establece el color del texto */
+  font-weight: 700;
+  /* Establece el peso de la fuente */
+  font-size: 20px;
+  /* Establece el tamaño de la fuente */
+  margin-top: 60px;
+  /* Establece el margen superior */
+  letter-spacing: 0.8px;
+  /* Establece el espaciado entre letras */
+  display: flex;
+  /* Establece la visualización como flexbox */
+  align-items: center;
+  /* Centra los elementos verticalmente */
+}
+
+/* Estilos para el icono SVG dentro del botón en el banner */
+.banner button svg {
+  font-size: 25px;
+  /* Establece el tamaño de la fuente */
+  margin-left: 10px;
+  /* Establece el margen izquierdo */
+  transition: 0.3s ease-in-out;
+  /* Agrega una transición suave */
+  line-height: 1;
+  /* Establece la altura de línea */
+}
+
+/* Estilos para el icono SVG dentro del botón en el banner al pasar el cursor sobre el botón */
+.banner button:hover svg {
+  margin-left: 25px;
+  /* Aumenta el margen izquierdo al pasar el cursor */
+}
+
+/* Estilos para la imagen en el banner con animación de subida y bajada */
+.banner img {
+  animation: updown 3s linear infinite;
+  /* Establece la animación */
+}
+
+/* Animación de subida y bajada */
+@keyframes updown {
+  0% {
+    transform: translateY(-20px);
+    /* Mueve la imagen hacia arriba */
+  }
+
+  50% {
+    transform: translateY(20px);
+    /* Mueve la imagen hacia abajo */
+  }
+
+  100% {
+    transform: translateY(-20px);
+    /* Mueve la imagen hacia arriba */
+  }
+}
+
+/* Estilos para la animación de texto rotativo */
+.txt-rotate>.wrap {
+  border-right: 0.08em solid #666;
+  /* Establece un borde derecho */
+}
+
+/************ Skills Css ************/
+.skill {
+  padding: 0 0 50px 0; /* Establece el relleno */
+  position: relative; /* Establece la posición relativa */
+}
+
+.skill-bx {
+  background: #151515; /* Establece el color de fondo */
+  border-radius: 64px; /* Establece el radio de borde */
+  text-align: center; /* Alinea el contenido al centro */
+  padding: 60px 50px; /* Establece el relleno */
+  margin-top: -60px; /* Desplaza el contenedor hacia arriba */
+}
+
+.skill h2 {
+  font-size: 45px; /* Establece el tamaño de la fuente */
+  font-weight: 700; /* Establece el peso de la fuente */
+}
+
+.skill p {
+  color: #B8B8B8; /* Establece el color del texto */
+  font-size: 18px; /* Establece el tamaño de la fuente */
+  letter-spacing: 0.8px; /* Establece el espaciado entre letras */
+  line-height: 1.5em; /* Establece la altura de línea */
+  margin: 14px 0 75px 0; /* Establece los márgenes */
+}
+
+.skill-slider {
+  width: 80%; /* Establece el ancho */
+  margin: 0 auto; /* Centra horizontalmente */
+  position: relative; /* Establece la posición relativa */
+}
+
+.skill-slider .item img {
+  width: 50%; /* Establece el ancho */
+  margin: 0 auto 15px auto; /* Establece los márgenes */
+}
+
+.background-image-left {
+  top: 28%; /* Posiciona desde arriba */
+  position: absolute; /* Establece la posición absoluta */
+  bottom: 0; /* Posiciona desde abajo */
+  width: 40%; /* Establece el ancho */
+  z-index: -4; /* Establece el índice z */
+}
+
+/************ Projects Css ************/
+.project {
+  padding: 80px 0; /* Establece el relleno */
+  position: relative; /* Establece la posición relativa */
+  background-color: black; /* Establece el color de fondo */
+}
+
+.project h2 {
+  font-size: 45px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.project p {
+  color: #B8B8B8;
+  font-size: 18px;
+  letter-spacing: 0.8px;
+  line-height: 1.5em;
+  margin: 14px auto 30px auto;
+  text-align: center;
+  width: 56%;
+}
+
+.project .nav.nav-pills {
+  width: 72%;
+  margin: 0 auto;
+  border-radius: 50px;
+  background-color: rgb(255 255 255 / 10%);
+  overflow: hidden;
+}
+
+.project .nav.nav-pills .nav-item {
+  width: 33.33333%;
+}
+
+.project .nav.nav-pills .nav-link {
+  background-color: transparent;
+  border-radius: 0;
+  padding: 17px 0;
+  color: #fff;
+  width: 100%;
+  font-size: 17px;
+  letter-spacing: 0.8px;
+  font-weight: 500;
+  position: relative;
+  transition: 0.3s ease-in-out;
+  text-align: center;
+  z-index: 0;
+}
+
+.project .nav.nav-pills .nav-link::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 100%;
+  background: linear-gradient(90.21deg, #AA367C -5.91%, #4A2FBD 111.58%);
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: 0.3s ease-in-out;
+}
+
+.project .nav.nav-pills .nav-link.active::before {
+  width: 100% !important;
+}
+
+.project .nav.nav-pills .nav-link.active {
+  border: 1px solid rgba(255, 255, 255, 1);
+}
+
+.nav-link#projects-tabs-tab-first {
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 55px 0px 0px 55px;
+}
+
+.nav-link#projects-tabs-tab-second {
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.nav-link#projects-tabs-tab-third {
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 0 55px 55px 0;
+}
+
+.proj-imgbx {
+  position: relative;
+  border-radius: 30px;
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+.proj-imgbx::before {
+  content: "";
+  background: linear-gradient(90.21deg, #AA367C -5.91%, #4A2FBD 111.58%);
+  opacity: 0.85;
+  position: absolute;
+  width: 100%;
+  height: 0;
+  transition: 0.4s ease-in-out;
+}
+
+.proj-imgbx:hover::before {
+  height: 100%;
+}
+
+.proj-txtx {
+  position: absolute;
+  text-align: center;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: 0.5s ease-in-out;
+  opacity: 0;
+  width: 100%;
+}
+
+.proj-imgbx:hover .proj-txtx {
+  top: 50%;
+  opacity: 1;
+}
+
+.proj-txtx h4 {
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  line-height: 1.1em;
+}
+
+.proj-txtx span {
+  font-style: italic;
+  font-weight: 400;
+  font-size: 15px;
+  letter-spacing: 0.8px;
+}
+
+.background-image-right {
+  top: 20%;
+  position: absolute;
+  bottom: 0;
+  width: 35%;
+  right: 0;
+  z-index: -4;
+}
+
+/************ Projects Css ************/
+.contact {
+  background: linear-gradient(90.21deg, #AA367C -5.91%, #4A2FBD 111.58%);
+  padding: 60px 0 200px 0;
+}
+
+.contact img {
+  width: 92%;
+}
+
+.contact h2 {
+  font-size: 45px;
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+
+.contact form input,
+.contact form textarea {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  color: #fff;
+  margin: 0 0 8px 0;
+  padding: 18px 26px;
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: 0.8px;
+  transition: 0.3s ease-in-out;
+}
+
+.contact form input:focus,
+.contact form textarea:focus {
+  background: rgba(255, 255, 255, 1);
+  color: #121212;
+}
+
+.contact form input::placeholder,
+.contact form textarea::placeholder {
+  font-size: 16px;
+  font-weight: 400;
+  color: #fff;
+}
+
+.contact form input:focus::placeholder,
+.contact form textarea:focus::placeholder {
+  color: #121212;
+  opacity: 0.8;
+}
+
+.contact form button {
+  font-weight: 700;
+  color: #000;
+  background-color: #fff;
+  padding: 14px 48px;
+  font-size: 18px;
+  margin-top: 25px;
+  border-radius: 0;
+  position: relative;
+  transition: 0.3s ease-in-out;
+}
+
+.contact form button span {
+  z-index: 1;
+  position: relative;
+}
+
+.contact form button:hover {
+  color: #fff;
+}
+
+.contact form button::before {
+  content: "";
+  background: #121212;
+  width: 0;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  transition: 0.3s ease-in-out;
+}
+
+.contact form button:hover::before {
+  width: 100%;
+}
+
+/************ Footer Css ************/
+.footer {
+  padding: 0 0 50px 0;
+  background-image: url('./assets/img/footer-bg.png');
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.newsletter-bx {
+  background: #FFFFFF;
+  border-radius: 55px;
+  color: #121212;
+  padding: 85px 125px;
+  margin-bottom: 80px;
+  margin-top: -122px;
+}
+
+.newsletter-bx h3 {
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  line-height: 1.2em;
+}
+
+.new-email-bx {
+  background: #fff;
+  padding: 5px;
+  border-radius: 20px;
+  position: relative;
+  z-index: 0;
+  display: flex;
+  align-items: center;
+}
+
+.new-email-bx::before {
+  content: "";
+  background: linear-gradient(90.21deg, #AA367C -5.91%, #4A2FBD 111.58%);
+  border-radius: 20px;
+  position: absolute;
+  z-index: -1;
+  top: -1px;
+  left: -1px;
+  bottom: -1px;
+  right: -1px;
+}
+
+.new-email-bx::after {
+  content: "";
+  background: #fff;
+  border-radius: 20px;
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.new-email-bx input {
+  width: 100%;
+  color: #121212;
+  font-weight: 500;
+  background: transparent;
+  border: 0;
+  padding: 0 15px;
+}
+
+.new-email-bx button {
+  background: linear-gradient(90.21deg, #AA367C -5.91%, #4A2FBD 111.58%);
+  padding: 20px 65px;
+  color: #fff;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  border-radius: 18px;
+}
+
+.footer img {
+  width: 26%;
+}
+
+.footer p {
+  font-weight: 400;
+  font-size: 14px;
+  color: #B8B8B8;
+  letter-spacing: 0.5px;
+  margin-top: 20px;
+}
